@@ -1030,6 +1030,8 @@ class IosARView: NSObject, FlutterPlatformView, ARSCNViewDelegate, UIGestureReco
         if let cachedImages = IosARView.cachedReferenceImages[cacheKey] {
             DispatchQueue.main.async {
                 self.configuration.detectionImages = cachedImages
+                self.configuration.automaticImageScaleEstimationEnabled = true
+                self.configuration.maximumNumberOfTrackedImages = 2
                 if runSession {
                     self.sceneView.session.run(self.configuration)
                 }
